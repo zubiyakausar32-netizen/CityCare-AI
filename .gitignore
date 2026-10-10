@@ -1,0 +1,15 @@
+node_modules/
+frontend/dist/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.env.*
+!.env.example
+secrets/
+*.pem
+*.key
+backend/data/*.db
+backend/models/*.joblib
+backend/models/*.json

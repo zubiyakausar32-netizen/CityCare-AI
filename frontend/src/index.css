@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  color: #132d27;
+  background: #f7f8f4;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f6f8f3 0%, #edf7f1 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.card {
+  border-radius: 1rem;
+  background: #ffffff;
+  border: 1px solid #d1fae5;
+  box-shadow: 0 10px 25px rgba(16, 59, 45, 0.08);
+}
+
+.form-field {
+  width: 100%;
+  border-radius: 0.75rem;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  color: #334155;
+  outline: none;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.form-field:focus {
+  border-color: #10b981;
+  background: #ffffff;
+}
+
+.primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.75rem;
+  background: #059669;
+  padding: 0.75rem 1.25rem;
+  font-weight: 500;
+  color: #ffffff;
+  transition: background-color 0.2s ease;
+}
+
+.primary-button:hover {
+  background: #047857;
+}
+
+.secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid #a7f3d0;
+  background: #ecfdf5;
+  padding: 0.75rem 1.25rem;
+  font-weight: 500;
+  color: #065f46;
+  transition: background-color 0.2s ease;
+}
+
+.secondary-button:hover {
+  background: #d1fae5;
+}
