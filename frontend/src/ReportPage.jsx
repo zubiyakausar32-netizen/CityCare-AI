@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, ChevronRight, ShieldCheck, Sparkles, Upload } from 'lucide-react';
+import { apiUrl, isBackendConfigured } from './api';
 
 const categories = [
   'Waste Management',
@@ -36,8 +37,12 @@ function ReportPage() {
     setSubmissionResult(null);
 
     try {
+      if (!isBackendConfigured) {
+        throw new Error('Complaint submission is unavailable until the CityCare backend is deployed and configured.');
+      }
+
       const complaintData = form;
-      const response = await fetch('/api/predict', {
+      const response = await fetch(apiUrl('/api/predict'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -64,7 +69,7 @@ function ReportPage() {
 
       console.log('Prediction result:', result);
 
-      const submissionResponse = await fetch('/api/complaints', {
+      const submissionResponse = await fetch(apiUrl('/api/complaints'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -107,7 +112,7 @@ function ReportPage() {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
           <Link to="/" className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-600 text-white shadow-soft">
-              <img src="/citycare-mark.svg" alt="" className="h-10 w-10 rounded-xl" />
+              <img src={`${import.meta.env.BASE_URL}citycare-mark.svg`} alt="" className="h-10 w-10 rounded-xl" />
             </div>
             <div>
               <div className="text-lg font-bold">CityCare AI</div>

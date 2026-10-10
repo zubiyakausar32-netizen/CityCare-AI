@@ -8,7 +8,7 @@ function CleanerPublicSpacesPage() {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
           <Link to="/" className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-600 text-white shadow-soft">
-              <img src="/citycare-mark.svg" alt="" className="h-10 w-10 rounded-xl" />
+              <img src={`${import.meta.env.BASE_URL}citycare-mark.svg`} alt="" className="h-10 w-10 rounded-xl" />
             </div>
             <div>
               <div className="text-lg font-bold text-slate-900">CityCare AI</div>

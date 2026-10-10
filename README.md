@@ -57,6 +57,12 @@ npm.cmd run dev
 
 Open `http://localhost:5173` with both servers running.
 
+### Publish the frontend with GitHub Pages
+
+The `main` branch automatically builds and deploys the frontend using GitHub Actions. In the repository, open **Settings → Pages** and set the build and deployment source to **GitHub Actions**. After the workflow succeeds, the site is available at `https://zubiyakausar32-netizen.github.io/CityCare-AI/`.
+
+GitHub Pages hosts only static files. To enable predictions, complaint submissions, and live dashboard data, deploy the Flask backend separately and set the repository variable `VITE_API_BASE_URL` under **Settings → Secrets and variables → Actions → Variables** to the backend's HTTPS base URL (without a trailing slash). The backend must allow requests from the GitHub Pages origin. Do not put private keys or secrets in `VITE_` variables.
+
 ### 4. Tests
 
 ```bash

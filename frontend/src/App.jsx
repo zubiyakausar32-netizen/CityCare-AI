@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { apiUrl, isBackendConfigured } from './api';
 import {
   Activity,
   ArrowRight,
@@ -55,24 +56,25 @@ function App({ dashboardOnly = false, insightsOnly = false, sdgOnly = false }) {
   const [adminMessage, setAdminMessage] = useState('');
 
   const fetchAnalytics = async () => {
-    const response = await fetch('/api/analytics');
+    const response = await fetch(apiUrl('/api/analytics'));
     const data = await response.json();
     setAnalytics(data);
   };
 
   const fetchComplaints = async () => {
-    const response = await fetch('/api/complaints?per_page=10');
+    const response = await fetch(apiUrl('/api/complaints?per_page=10'));
     const data = await response.json();
     setComplaints(data.items || []);
   };
 
   const fetchModelEvaluation = async () => {
-    const response = await fetch('/api/model/evaluation');
+    const response = await fetch(apiUrl('/api/model/evaluation'));
     const data = await response.json();
     setModelEvaluation(data);
   };
 
   useEffect(() => {
+    if (!isBackendConfigured) return;
     fetchAnalytics();
     fetchComplaints();
     fetchModelEvaluation();
@@ -95,7 +97,7 @@ function App({ dashboardOnly = false, insightsOnly = false, sdgOnly = false }) {
     }
 
     try {
-      const response = await fetch(`/api/complaints/${complaintId}/status`, {
+      const response = await fetch(apiUrl(`/api/complaints/${complaintId}/status`), {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -145,7 +147,7 @@ function App({ dashboardOnly = false, insightsOnly = false, sdgOnly = false }) {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-600 text-white shadow-soft">
-              <img src="/citycare-mark.svg" alt="" className="h-10 w-10 rounded-xl" />
+              <img src={`${import.meta.env.BASE_URL}citycare-mark.svg`} alt="" className="h-10 w-10 rounded-xl" />
             </div>
             <div>
               <div className="text-lg font-bold text-slate-900">CityCare AI</div>
@@ -171,6 +173,11 @@ function App({ dashboardOnly = false, insightsOnly = false, sdgOnly = false }) {
       </header>
 
       <main>
+        {!isBackendConfigured && dashboardOnly && !sdgOnly && (
+          <div className="mx-auto mt-6 max-w-7xl rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+            Live dashboard data requires a deployed backend. Configure the repository variable <code>VITE_API_BASE_URL</code> with its API URL.
+          </div>
+        )}
         {!dashboardOnly && (
           <>
         <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
