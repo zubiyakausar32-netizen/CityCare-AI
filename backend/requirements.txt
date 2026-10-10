@@ -1,0 +1,8 @@
+Flask
+Flask-Cors
+gunicorn
+numpy>=1.26.4
+pandas>=2.2.3
+scikit-learn
+joblib
+python-dotenv
