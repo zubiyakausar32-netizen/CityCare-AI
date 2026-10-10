@@ -1,5 +1,9 @@
 # CityCare AI
 
+## Open the website
+
+[Launch the live CityCare AI website](https://zubiyakausar32-netizen.github.io/CityCare-AI/)
+
 CityCare AI is a civic technology platform that allows residents to report urban issues, receive AI-powered classification, and monitor service performance with a sustainability-oriented dashboard.
 
 ## Features
