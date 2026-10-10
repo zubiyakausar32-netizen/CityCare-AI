@@ -69,7 +69,6 @@ def home():
     </body>
     </html>
     """
-</escape>
 
 
 if __name__ == '__main__':
