@@ -34,6 +34,43 @@ def create_app(config_override=None):
 
 app = create_app()
 
+@app.route("/")
+def home():
+    return """
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>CityCare AI</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background: #f0f7f5;
+                color: #163b35;
+                text-align: center;
+                padding: 80px 20px;
+            }
+            h1 { font-size: 42px; }
+            p { font-size: 18px; }
+            a {
+                display: inline-block;
+                background: #147d64;
+                color: white;
+                padding: 12px 22px;
+                border-radius: 8px;
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>CityCare AI</h1>
+        <p>AI-powered solutions for sustainable cities and communities.</p>
+        <a href="/api/">Explore API</a>
+    </body>
+    </html>
+    """
+</escape>
+
 
 if __name__ == '__main__':
     app.run(
