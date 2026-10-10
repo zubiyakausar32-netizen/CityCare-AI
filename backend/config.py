@@ -11,6 +11,7 @@ MODELS_DIR = BACKEND_DIR / 'models'
 MODEL_PATH = MODELS_DIR / 'civic_classifier.joblib'
 EVAL_PATH = MODELS_DIR / 'evaluation.json'
 DATA_DIR = BACKEND_DIR / 'data'
+DATA_DIR.mkdir(parents=True, exist_ok=True)
 DB_PATH = DATA_DIR / 'citycare.db'
 
 
