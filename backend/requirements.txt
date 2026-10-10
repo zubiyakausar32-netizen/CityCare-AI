@@ -1,5 +1,6 @@
 Flask
 Flask-Cors
+Flask-SQLAlchemy
 gunicorn
 numpy>=1.26.4
 pandas>=2.2.3
